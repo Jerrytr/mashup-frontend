@@ -1,19 +1,18 @@
-/* global $ */
+/* global $ twttr */
 
-function createButton(shortName, gtfsId) {
-    $('#routeButtons').append('<button type="button" id="'+gtfsId+'" onClick="routeButtonClicked(this.id)">'+shortName+'</button>');
+function appendSearchResults(shortName, gtfsId) {
+    $('#results').append('<li id="'+gtfsId+
+    '" onClick="searchResultClicked(this.id)"><a href="#">'+
+    shortName+'</a></li>');
 }
-
 function parseResponse(response) {
     let clean = response.data.routes;
     clean.forEach(function(entry) {
         console.log(entry.shortName);
         let shortName = entry.shortName;
         let gtfsId = entry.gtfsId;
-        createButton(shortName, gtfsId);
+        appendSearchResults(shortName, gtfsId);
     });
-    // console.log(clean);
-    // clean = clean.sort();
 }
 
 function getRoutes(routeName) {
@@ -27,23 +26,39 @@ function getRoutes(routeName) {
         console.log(xhr.response);
         parseResponse(xhr.response);
     };
-    xhr.send(JSON.stringify({query: '{routes(name: "'+routeName+'") {shortName gtfsId}}'}));
+    xhr.send(JSON.stringify({query: '{routes(name: "'+
+    routeName+'") {shortName gtfsId}}'}));
 }
 
 function getUserInput() {
     let routeName = $('#routeQueryText').val();
-    return routeName;
+    console.log('got input '+routeName);
+    $('#results').empty();
+    if (routeName != '') {
+        getRoutes(routeName);
+    }
 }
 
-$('#sendQueryButton').click(function(event) {
-    event.preventDefault();
-    let routeName = getUserInput();
-    console.log(routeName);
-    getRoutes(routeName);
-});
+$('#routeQueryText').keyup = function() {
+    let searchTerm = $('#routeQueryText').val();
+    console.log('key up');
+    console.log(searchTerm);
+    getRoutes(searchTerm);
+};
 
-function routeButtonClicked(clickedId) {
+function searchResultClicked(clickedId) {
     console.log(clickedId);
+    $('#results').empty();
+    createTweetButton(clickedId);
+}
+
+function createTweetButton(HSLRouteId) {
+    twttr.widgets.createShareButton(
+        '/',
+        document.getElementById('tweetButtonDiv'), {
+            text: '@mashbot001 subscribe ' + HSLRouteId,
+        }
+    );
 }
 
 /*
