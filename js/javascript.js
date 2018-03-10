@@ -60,7 +60,7 @@ function parseResponse(response) {
 // This way we can send the gtfsId to the backend,since the backend uses gtfsIds
 function appendSearchResults(shortName, gtfsId) {
     $('#results').append('<li id="'+gtfsId+
-    '" onClick="searchResultClicked(this.id, '+shortName+')"><a href="#">'+
+    '" onClick="searchResultClicked(this.id, \''+shortName+'\')"><a href="#">'+
     shortName+'</a></li>');
 }
 
