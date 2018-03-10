@@ -1,3 +1,4 @@
+'use strict';
 /* global $ twttr */
 
 function appendSearchResults(shortName, gtfsId) {
