@@ -5,15 +5,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>tweety twoot</title>
 
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script type="text/javascript" src="js/javascript.js" defer></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
     </head>
-    <body>
+    <body class="text-center">
+        <h1>Wadap</h1>
         <form id="routeQueryForm">
             <input type="text" id="routeQueryText" onkeyup="getUserInput()" placeholder="Enter route code (example: 23, 6T)" />
             <ul id="results"></ul>
-        <div id="tweetButtonDiv"></div>
+        <div id="subscribeTweetButtonDiv">
+        </div>
+        <div id="unsubscribeTweetButtonDiv">
+        </div>
+        <div id="unsubscribeAllTweetButtonDiv">
+            <br>Unsubscribe from all lines
+        </div>
     </body>
 </html>
