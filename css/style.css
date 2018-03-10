@@ -24,3 +24,6 @@
 #subscribeTweetButtonDiv, #unsubscribeTweetButtonDiv, #unsubscribeAllTweetButtonDiv {
     font-size: 1.5em
 }
+.masthead-kindof {
+    margin-top: -11px;
+}

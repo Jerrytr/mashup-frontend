@@ -90,18 +90,22 @@ function searchResultClicked(clickedId, clickedName) {
 }
 
 function createTweetButtons(HSLRouteId, HSLRouteName) {
-    // $('#subscribeTweetButtonDiv').html('<p id="subscribe"></p>');
-    $('#subscribeTweetButtonDiv').html('Subscribe to '+HSLRouteName+' ('+HSLRouteId+') ');
-    // $('#unsubscribeTweetButtonDiv').html('<p id="unsubscribe"></p>');
-    $('#unsubscribeTweetButtonDiv').html('<br>Unsubscribe from '+HSLRouteName+' ('+HSLRouteId+') ');
+    // Create the "instructions" to what the buttons do
+    $('#subscribeTweetButtonDiv').html('Subscribe to '+HSLRouteName+
+    ' ('+HSLRouteId+') ');
+    $('#unsubscribeTweetButtonDiv').html('<br>Unsubscribe from '+HSLRouteName+
+    ' ('+HSLRouteId+') ');
+
+    // Create the actual buttons
     twttr.widgets.createShareButton(
         '/',
         document.getElementById('subscribeTweetButtonDiv'), {
-            text: '@mashbot001 subscribe ' + HSLRouteId,
-            size: 'medium',
-            dnt: true,
+            text: '@mashbot001 subscribe ' + HSLRouteId, // Tweet content
+            size: 'medium', // Size of the button
+            dnt: true, // Do not track
         }
     );
+
     twttr.widgets.createShareButton(
         '/',
         document.getElementById('unsubscribeTweetButtonDiv'), {
@@ -112,6 +116,8 @@ function createTweetButtons(HSLRouteId, HSLRouteName) {
     );
 }
 
+// The unsubscribe all button should always be there*, so create it immidiately
+// It's not dependant on the user input
 twttr.widgets.createShareButton(
     '/',
     document.getElementById('unsubscribeAllTweetButtonDiv'), {
@@ -120,16 +126,3 @@ twttr.widgets.createShareButton(
         dnt: true,
     }
 );
-
-/*
-let xhr = new XMLHttpRequest();
-xhr.responseType = 'json';
-xhr.open('POST', 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql');
-xhr.setRequestHeader('Content-Type', 'application/json');
-xhr.onload = function() {
-    console.log(xhr.response);
-};
-// xhr.send(JSON.stringify({query: '{stop(id:"HSL:1140447") { name } }'}));
-xhr.send(JSON.stringify({query: '{routes(name: "23") {shortName}}'}));
-
-*/
