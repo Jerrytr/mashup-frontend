@@ -3,6 +3,7 @@
 
 // First we get the user's input from the form
 // This function gets called when onKeyUp() is triggered
+// eslint-disable-next-line no-unused-vars
 function getUserInput() {
     // routeName is the name of the HSL route known by humans
     // for example, 23, 6T or 550
@@ -76,6 +77,7 @@ function appendSearchResults(shortName, gtfsId) {
 // is what we will display to the user, since they'd have no clue
 // what the gtfsId actually is
 // This function is called by onClick() of the <li> element in search results
+// eslint-disable-next-line no-unused-vars
 function searchResultClicked(clickedId, clickedName) {
     console.log(clickedName);
     console.log(clickedId);
