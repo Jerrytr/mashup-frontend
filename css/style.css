@@ -31,4 +31,9 @@
 #whatsthisthing {
     max-width: 600px;
     margin: 0 auto;
+    padding: 0 4px 0 0;
+}
+
+.bold-large {
+    font-size: x-large;
 }
