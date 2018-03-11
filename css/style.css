@@ -27,3 +27,8 @@
 .masthead-kindof {
     margin-top: -11px;
 }
+
+#whatsthisthing {
+    max-width: 600px;
+    margin: 0 auto;
+}
